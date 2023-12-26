@@ -1,0 +1,72 @@
+﻿@model IEnumerable<VidlysProject.Models.Customer>
+@{
+                        ViewBag.Title = "Index";
+}
+<h1>
+    CUSTOMERS
+</h1>
+@if (!Model.Any()){
+
+<p>We Dont have any customer yet.</p>
+}
+else{
+
+<table id="customers" class="table table-bordered table-hover">
+    <thead>
+
+        <tr>
+            <th>Customer</th>
+            @*<th>Discount Rate</th>*@
+            <th>Membership Type</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model){
+        <tr>
+            <td>
+                @Html.ActionLink(customer.Name, "Edit", "Customer", new { id = customer.Id }, null)
+            </td>
+            @*<td>@customer.MembershipType.DiscountRate% </td>*@
+            <td>@customer.MembershipType.DurationInMonths</td>
+            <td>
+                <button data-customer-id="@customer.Id" class="btn-link js-delete" >Delete</button>
+            </td>
+        </tr>
+                                   }
+    </tbody>
+</table>
+}
+@section scripts
+{
+<script>
+    //$(document).ready(function () {
+    //    $("#customers .js-delete").on("click", function () {
+    //        if (confirm("Are you sure you want to delete this customer")) {
+    //            $.ajax({
+    //                url: "/api/customers/" + $(this).attr("data-customer-id"),
+    //                method: "DELETE",
+    //                success: function () {
+    $("#customers").on("click", ".js-delete", function () {
+        var button = $(this);
+
+
+        if (confirm) {
+                $.ajax({
+                    url: "/api/customers/" + button.attr("data-customer-id"),
+                    method: "DELETE",
+                    success: function () {
+                        console.log("Success");
+                    }   
+                });
+            }
+        
+    });
+    </script>    
+}
+
+
+
+
+
+
