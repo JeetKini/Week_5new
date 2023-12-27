@@ -1,0 +1,23 @@
+﻿
+@model VidlysProject.Models.Movie
+
+
+@{
+    ViewBag.Title = "Details";
+}
+<h2>@Model.Name</h2>
+<p>
+    @using (Html.BeginForm())
+    {
+    <ul>
+        <li>Genre : @Model.Genre.Type</li>
+        <li>DataAdded : @Model.DataAdded.ToString("dddd, MMMM dd, yyyy")</li>
+        <li>Release Date: @Model.ReleaseDate.ToString("dddd, MMMM dd, yyyy")</li>
+
+        <li>NumberInStock : @Model.NumberInStock</li>
+    </ul>
+    }
+
+
+}
+</p>

@@ -1,0 +1,29 @@
+﻿@model VidlysProject.ViewModels.RamdomMovieViewModel
+
+    @{
+        ViewBag.Title = "Home Page";
+    }
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CustomerName</title>
+</head>
+<body>
+    <div>
+        <h1>Customers</h1>
+    </div>
+    <div>
+
+        <ul>
+            @foreach (var item in Model.Customers)
+            {
+                <li>@Html.ActionLink(item.Name,"Details")</li>
+            }
+        </ul>
+    </div>
+</body>
+</html>
